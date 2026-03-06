@@ -18,8 +18,11 @@ RUN cmake --build . --target install
 
 EXPOSE 8081
 
+RUN mkdir /data
+
 CMD telegram-bot-api \
   --api-id=$TELEGRAM_API_ID \
   --api-hash=$TELEGRAM_API_HASH \
   --http-port=$PORT \
+  --http-ip-address=0.0.0.0 \
   --dir=/data
